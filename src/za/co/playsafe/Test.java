@@ -44,9 +44,21 @@ public class Test {
 				System.out.println(playerNumber++ + ". " + player.getName());
 			}
 			playerNumber = 0;
-			System.out.print("\nSelect Player You Want To Bet: ");
 
-			chioce = scanner.nextInt();
+			for (;;) {
+				try {
+					scanner.nextLine();
+					System.out.print("\nSelect Player You Want To Bet: ");
+
+					chioce = scanner.nextInt();
+
+					break;
+				} catch (Exception e) {
+					System.out.println();
+					System.err.println("Only Numbers Allowed");
+					// continue;
+				}
+			}
 
 			if (chioce >= players.size()) {
 				System.out.println("Inavid Player Name {try between 0 - " + players.stream().count() + "}");
@@ -54,14 +66,31 @@ public class Test {
 			}
 			player = rouletteService.validatePlayer(chioce);
 
-			System.out.print("\nSelect bet Value/Amount : R");
-			betValue = scanner.nextInt();
-
+			for (;;) {
+				try {
+					scanner.nextLine();
+					System.out.print("\nSelect bet Value/Amount : R");
+					betValue = scanner.nextInt();
+					break;
+				} catch (Exception e) {
+					System.err.println("Numbers Please...{3.0, 5.7 ..ect}");
+				}
+			}
 			System.out.println("\n");
-			System.out.print(
-					"1. " + BetType.EVEN + "\n2. " + BetType.ODD + "\n3. " + BetType.NUMBER + "\nSelect Bet Type: ");
 
-			betType = scanner.nextInt();
+			for (;;) {
+				try {
+					scanner.nextLine();
+					System.out.print("1. " + BetType.EVEN + "\n2. " + BetType.ODD + "\n3. " + BetType.NUMBER
+							+ "\nSelect Bet Type: ");
+
+					betType = scanner.nextInt();
+					break;
+				} catch (Exception e) {
+					System.out.println();
+					System.err.println("Numbers Please....");
+				}
+			}
 
 			if (betType == 3) {
 				System.out.print("Place your bet on number(1-36): ");
@@ -70,9 +99,6 @@ public class Test {
 
 			// Placing Bet
 			resultRoulette = rouletteService.placeBet(spin, betValue, betType, number, player);
-
-			// Print Data Here
-			scanner.nextLine();
 
 			// Checking Statistics per player
 			rouletteService.checkPlayersStatistics(rouletteService.resultRoulettes, player);
@@ -83,8 +109,8 @@ public class Test {
 
 		betPlayers = rouletteService.betPlayers;
 
-		//rouletteService.addingOldReecord(betPlayers);
-		
+		// rouletteService.addingOldReecord(betPlayers);
+
 		resultRoulettes = rouletteService.resultRoulettes;
 
 		System.out.println("\nNumber: " + spin + " 				Output 1");
