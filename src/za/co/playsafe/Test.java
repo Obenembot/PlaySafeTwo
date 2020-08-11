@@ -62,7 +62,7 @@ public class Test {
 			}
 
 			if (chioce >= players.size()) {
-				System.out.println("Inavid Player Name {try between 0 - " + players.stream().count() + "}");
+				System.out.println("Inavid Player Name {try between 0 - " + (players.stream().count() -1 )  + "}");
 				continue;
 			}
 			player = rouletteService.validatePlayer(chioce);
@@ -86,7 +86,15 @@ public class Test {
 							+ "\nSelect Bet Type: ");
 
 					betType = scanner.nextInt();
-					break;
+					
+					if (betType >=1 && betType <=3) {
+						
+						break;
+					}else {
+					
+System.err.println("Bet Should be greater than 0 and less than  4\n");
+					}
+					
 				} catch (Exception e) {
 					System.out.println();
 					System.err.println("Numbers Please....");
