@@ -88,7 +88,7 @@ public class RouletteService {
 			resultRoulette = new ResultRoulette(player.getName(), bet.getBetType().name(), "Win's", bet.getValue(),
 					betValue);
 
-		} else if (betType == 3) {
+		} else if (betNumber == 3) {
 
 			resultRoulette = this.forNumber(betValue, betNumber, spin, player);
 
