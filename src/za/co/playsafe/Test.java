@@ -37,17 +37,18 @@ public class Test {
 
 		do {
 
-			System.out.println();
+			System.out.println("\n \tPlayers");
 			while (players.size() != playerNumber) {
 				player = Test.players.get(playerNumber);
 
-				System.out.println(playerNumber++ + ". " + player.getName());
+				System.out.println("\t"+playerNumber++ + ". " + player.getName());
 			}
 			playerNumber = 0;
 
 			for (;;) {
+				scanner.nextLine();
 				try {
-					scanner.nextLine();
+					//scanner.nextLine();
 					System.out.print("\nSelect Player You Want To Bet: ");
 
 					chioce = scanner.nextInt();
@@ -81,7 +82,7 @@ public class Test {
 			for (;;) {
 				try {
 					scanner.nextLine();
-					System.out.print("1. " + BetType.EVEN + "\n2. " + BetType.ODD + "\n3. " + BetType.NUMBER
+					System.out.print("\t1. " + BetType.EVEN + "\n \t2. " + BetType.ODD + "\n \t3. " + BetType.NUMBER
 							+ "\nSelect Bet Type: ");
 
 					betType = scanner.nextInt();
